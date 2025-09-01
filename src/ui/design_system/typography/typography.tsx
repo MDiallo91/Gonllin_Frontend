@@ -29,7 +29,7 @@ const Typography = ({ variant="h3",className,theme="black",weight="regular",comp
    
   switch (theme) {
     case "black": //default
-        colorStyle="text-primary-900"
+        colorStyle="text-gray-900"
       break;
     case "white":
         colorStyle="text-primary-600"

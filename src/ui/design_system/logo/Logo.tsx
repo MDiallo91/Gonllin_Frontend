@@ -12,7 +12,7 @@ function Logo({ size = "medium" }: Props) {
       sizeLogo = 34;
       break;
     case "small":
-      sizeLogo = 61;
+      sizeLogo = 50;
       break;
     case "medium":
       sizeLogo = 88;

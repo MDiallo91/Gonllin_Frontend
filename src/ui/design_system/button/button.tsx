@@ -1,5 +1,6 @@
 import clsx from "clsx"
-import Spinner from "../spinner/spinner"
+import Spinner from "../spinner/Spinner"
+
 
 interface Props {
     size?:"small"|"medium"|"large"
@@ -56,11 +57,11 @@ function Button({
     //determiner la taille de l'icon du bouton
     switch (size) {
         case "small":
-            sizeStyle=`${variant=="icon"? "flex items-center justify-center  w-[40px] h-[40px] ":"px-[12px] py-[10px] font-medium"} `
+            sizeStyle=`text-[14px] ${variant=="icon"? "flex items-center justify-center  w-[40px] h-[40px] ":"px-[12px] py-[10px] font-medium"} `
             icoSize=18
             break;
         case "medium"://default
-            sizeStyle=`text-lg font-medium ${variant=="icon"? "flex items-center  justify-center w-[50px] h-[50px] ":"px-[14px] py-[12px] "} `
+            sizeStyle=`text-[16px] font-medium ${variant=="icon"? "flex items-center  justify-center w-[50px] h-[50px] ":"px-[14px] py-[12px] "} `
             icoSize=20
             break;
         case "large":
