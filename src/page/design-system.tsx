@@ -5,11 +5,13 @@ import Button from "../ui/design_system/button/button"
 import Logo from "../ui/design_system/logo/Logo"
 import Typography from "../ui/design_system/typography/typography"
 import avatar from "../../public/svg/avatar.svg"
+import Carousel from "../ui/component/caroussel/Caroussel"
 
 
 function DesignSystem() {
   return (
       <>
+      <Carousel/>
       <Contenair>
 
 

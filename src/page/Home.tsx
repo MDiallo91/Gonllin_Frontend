@@ -1,20 +1,30 @@
+import { motion } from "framer-motion"
+import { RiArrowRightFill, RiDiscordFill, RiFacebookFill, RiInstagramFill, RiTwitterFill } from "react-icons/ri"
+import { Link } from "react-router-dom"
+
+import Carousel from "../ui/component/caroussel/Caroussel"
 import Contenair from "../ui/component/contenair/Contenair"
-import Typography from "../ui/design_system/typography/typography"
-import image1 from "../../public/images/profil1.png"
-import Button from "../ui/design_system/button/button"
-import { RiArrowRightFill } from "react-icons/ri"
 import Avatar from "../ui/design_system/avatar/Avatar"
-import PubProjet from "../../public/svg/publierProjet.svg"
-import ChoiOuvrier from "../../public/svg/choiOuvrier.svg"
-import Postuler from "../../public/svg/postuler.svg"
+import Button from "../ui/design_system/button/button"
+import Typography from "../ui/design_system/typography/typography"
+//image
+import image1 from "/images/profil1.png"
+import avatar from "/svg/avatar.svg"
+import ChoiOuvrier from "/svg/choiOuvrier.svg"
+import Postuler from "/svg/postuler.svg"
+import PubProjet from "/svg/publierProjet.svg"
 
 
 function Home() {
+    const date = new Date();
+    const annee = date.getFullYear();
+    
   return (
     <>
-        <Contenair className="flex flex-col md:flex-row  text-white items-center p-6 py-12 bg-primary-200 gap-3 md:gap-10">
-        {/* Texte */}
-        <div className="flex flex-col w-full md:w-1/2 text-center md:text-left">
+        {/* Section presentation  */}
+        <Contenair className="flex relative flex-col md:flex-row  text-white items-center bg-primary-200 gap-3 md:gap-10">
+   
+        <div className="flex flex-col w-full md:w-1/2 text-center md:text-left  p-6 py-12">
             <Typography component="h1" variant="body-lg" weight="medium" theme="secondary"  className=" text-center md:text-5xl md:text-left font-medium "
  >
             Connectez-vous avec des professionnels qualifiés
@@ -57,17 +67,23 @@ function Home() {
         </div>
 
         {/* Image */}
-        <div className="w-full md:w-1/2 flex justify-center">
+        <motion.div
+             initial={{ opacity: 0, y: 20 }}       
+            whileInView={{ opacity: 1, y: 0 }}    
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            viewport={{ once: false, amount: 0.3 }}
+             className="w-full md:w-1/2 flex justify-center md:absolute bottom-0 right-0">
             <img
             src={image1}
             alt="profil"
-            className="w-3/4 md:w-full max-w-sm md:max-w-md rounded-xl "
+            className="w-3/4 md:w-full max-w-sm md:max-w-md rounded-xl"
             />
-        </div>
+        </motion.div>
         </Contenair>
 
 
       {/* Section comment ça marche */}
+      
         <Contenair className="md:py-5 p-0 md:px-6 mx-auto gap-1 md:gap-8 bg-gray-50">
             <Typography
                 component="h3"
@@ -79,7 +95,13 @@ function Home() {
             </Typography>
 
             <Contenair className="flex flex-col md:flex-row justify-around items-center my-7 gap-10">
-                <div className="flex flex-col justify-center items-center text-center w-full md:w-1/3">
+                <motion.div 
+                    className="flex flex-col justify-center items-center text-center w-full md:w-1/3"
+                    initial={{ opacity: 0, y: 20 }}       
+                    whileInView={{ opacity: 1, y: 0 }}    
+                    transition={{ duration: 0.8, ease: "easeOut" }}
+                    viewport={{ once: false, amount: 0.3 }}
+                >
                     <Avatar src={PubProjet} size="small" alt="projet" />
                     <Typography
                         variant="h5"
@@ -90,9 +112,15 @@ function Home() {
                         Publiez votre projet
                     </Typography>
                      <p className="px-5 text-sm">Décrivez vos besoins en quelques clics : type de travaux, budget et délais. Votre projet sera visible par des ouvriers qualifiés prêts à vous aider.</p>
-                </div>
+                </motion.div>
 
-                <div className="flex flex-col justify-center items-center text-center w-full md:w-1/3">
+                <motion.div 
+                    className="flex flex-col justify-center items-center text-center w-full md:w-1/3"
+                    initial={{ opacity: 0, y: 20 }}       
+                    whileInView={{ opacity: 1, y: 0 }}    
+                    transition={{ duration: 0.8, ease: "easeOut" }}
+                    viewport={{ once: false, amount: 0.3 }}
+                    >
                     <Avatar src={Postuler} size="small" alt="projet" />
                     <Typography
                         variant="h5"
@@ -103,9 +131,15 @@ function Home() {
                         Les ouvriers postulent à votre projet
                     </Typography>
                      <p className="px-5 text-sm">Des ouvriers compétents ou entreprise consultent votre projet et vous envoient leurs propositions. Comparez les profils, l’expérience et les avis laissés par d’autres clients.</p>
-                </div>
+                </motion.div>
 
-                <div className="flex flex-col justify-center items-center text-center w-full md:w-1/3">
+                <motion.div 
+                    className="flex flex-col justify-center items-center text-center w-full md:w-1/3"
+                     initial={{ opacity: 0, y: 20 }}       
+                    whileInView={{ opacity: 1, y: 0 }}    
+                    transition={{ duration: 0.8, ease: "easeOut" }}
+                    viewport={{ once: false, amount: 0.3 }}
+                    >
                     <Avatar src={ChoiOuvrier} size="small" alt="projet" />
                     <Typography
                         variant="h5"
@@ -116,7 +150,7 @@ function Home() {
                         Vous choisissez votre ouvrier
                     </Typography>
                     <p className="px-5 text-sm">Sélectionnez l’ouvrier qui correspond le mieux à vos attentes. Collaborez en toute confiance et suivez l’avancement de votre projet.</p>
-                </div>
+                </motion.div>
             </Contenair>
             <div className="flex items-center justify-center px-20 pb-3 pt-10">
                 <Button size="small" variant="outline">
@@ -131,10 +165,15 @@ function Home() {
                 className="text-center text-white py-10 text-xl md:text-2xl">
                 Notre impact
             </Typography>
-            <Contenair className="p-10 mx-auto flex flex-col gap-4 md:flex-row md:justify-around md:px-8 md:py-10">
+            <Contenair className="p-10 mx-auto flex flex-col gap-4 md:flex-row md:justify-around md:px-12 md:py-10">
                 {/* Bloc 1 */}
-                <div
-                    className="flex items-center gap-3 rounded-2xl bg-white shadow-md hover:shadow-lg transition-shadow p-4 md:p-6">
+                <motion.div
+                    className="flex border-l-4  border-primary-600 md:w-1/4 md:mx-5  items-center gap-3 rounded-2xl bg-white shadow-md hover:shadow-lg transition-shadow p-4 md:p-6"
+                     initial={{ opacity: 0, y: 20 }}       
+                    whileInView={{ opacity: 1, y: 0 }}    
+                    transition={{ duration: 0.8, ease: "easeOut" }}
+                    viewport={{ once: false, amount: 0.3 }}
+                    >
                     <Avatar src={PubProjet} size="very-small" alt="projet" />
                     <div className="flex flex-col">
                         <Typography variant="h5" weight="medium"
@@ -146,10 +185,14 @@ function Home() {
                             Professionnels
                         </Typography>
                     </div>
-                </div>
+                </motion.div>
                 {/* Bloc 2 */}
-                <div
-                    className="flex items-center gap-3 rounded-2xl bg-white shadow-md hover:shadow-lg transition-shadow p-4 md:p-6">
+                <motion.div
+                     initial={{ opacity: 0, y: 20 }}       
+                    whileInView={{ opacity: 1, y: 0 }}    
+                    transition={{ duration: 0.8, ease: "easeOut" }}
+                    viewport={{ once: false, amount: 0.3 }}
+                    className="flex  border-l-4 border-primary-600  md:w-1/4 md:mx-5 items-center gap-3 rounded-2xl bg-white shadow-md hover:shadow-lg transition-shadow p-4 md:p-6">
                     <Avatar src={PubProjet} size="very-small" alt="projet" />
                     <div className="flex flex-col">
                         <Typography variant="h5" weight="medium"
@@ -161,10 +204,14 @@ function Home() {
                             Métiers
                         </Typography>
                     </div>
-                </div>
+                </motion.div>
                 {/* Bloc 3 */}
-                <div
-                    className="flex items-center gap-3 rounded-2xl bg-white shadow-md hover:shadow-lg transition-shadow p-4 md:p-6">
+                <motion.div
+                     initial={{ opacity: 0, y: 20 }}       
+                    whileInView={{ opacity: 1, y: 0 }}    
+                    transition={{ duration: 0.8, ease: "easeOut" }}
+                    viewport={{ once: false, amount: 0.3 }}
+                    className="flex md:w-1/4 md:mx-5 border-l-4 border-primary-600 items-center gap-3 rounded-2xl bg-white shadow-md hover:shadow-lg transition-shadow p-4 md:p-6">
                     <Avatar src={PubProjet} size="very-small" alt="projet" />
                     <div className="flex flex-col">
                         <Typography variant="h5" weight="medium"
@@ -176,10 +223,128 @@ function Home() {
                             Projets
                         </Typography>
                     </div>
+                </motion.div>
+                
+            </Contenair>
+            {/* //bouton */}
+            <div className="flex  items-center p-4 gap-4">
+                <div className="flex items-center  justify-center gap-6 w-full">
+                    <Link to="/login" onClick={()=>console.log("login")}>
+                    <Button size="small" variant="outline">Se connecter</Button>
+                    </Link>
+                    <Link to="/register" onClick={()=> console.log("register")}>
+                    <Button size="small" variant="secondary">
+                        S'inscrire
+                    </Button>
+                    </Link>
                 </div>
+            </div>
+        </Contenair>
+        
+
+        {/* section no metiers */}
+         <Contenair className=" bg-gray-50">
+            <Typography component="h3" weight="medium" theme="secondary"
+                className="text-center py-10 text-xl md:text-2xl">
+                Nos Metiers
+            </Typography>
+            <Contenair className="p-10 mx-auto flex flex-col gap-4 md:flex-row md:justify-around md:px-12 md:py-10">
+                <Carousel/>
             </Contenair>
         </Contenair>
 
+         {/* section Professionnel */}
+         <Contenair className=" bg-secondary-50 ">
+            <Typography component="h3" weight="medium" theme="secondary"
+                className="text-center py-10 text-xl md:text-2xl">
+                Vous etes un pro dans votre domaine?
+            </Typography>
+            <Contenair className="p-10 mx-auto flex  flex-col gap-4 md:flex-row md:justify-around md:px-12 md:py-10">
+               <div className="md:w-1/2" >
+                <img src={avatar} alt="image Professionnel"  className="w-full"/>
+               </div>
+               <div className="P-6 md:w-1/2">
+                 <p className="p-2 text-justify ">
+                    Que vous soyez artisan, indépendant ou entreprise, notre plateforme vous met en relation directe avec des clients qui recherchent vos compétences. Que vous soyez spécialisé en électricité, plomberie, peinture ou tout autre métier, vous bénéficiez d’une vitrine digitale professionnelle pour présenter votre savoir-faire.
+                 </p>
+                    <p className="p-2 text-justify">
+                        Profitez d’une visibilité accrue sur un réseau de clients qualifiés, gagnez du temps dans la recherche de nouveaux projets et concentrez-vous sur ce que vous faites de mieux : votre travail. Notre outil vous permet de gérer vos offres, vos disponibilités et vos demandes de manière simple et efficace.
+                    </p>
+                    <p className="p-2 text-justify">
+                        Développez votre activité et augmentez votre chiffre d’affaires grâce à des projets adaptés à vos compétences. Transformez chaque contact en opportunité, fidélisez vos clients et faites grandir votre réputation dans votre domaine.
+                    </p>
+                        {/* //bouton */}
+                    <div className="flex  items-center p-4 gap-4">
+                        <div className="flex items-center  justify-center gap-6 w-full">
+                            <Link to="/login" onClick={()=>console.log("login")}>
+                            <Button size="small" variant="accent">Se connecter</Button>
+                            </Link>
+                            <Link to="/register" onClick={()=> console.log("register")}>
+                            <Button size="small" variant="outline">
+                                S'inscrire gratuitement
+                            </Button>
+                            </Link>
+                        </div>
+                    </div>
+               </div>
+            </Contenair>
+        </Contenair>
+
+         {/* section footer */}
+        <Contenair className=" bg-gray-900 text-white px-15 py-10">
+            <footer className="px-10 md:flex  justify-around">
+                <div className="">
+                    <p className=" uppercase mb-3">Nos metier</p>
+                    <ul className="text-sm gap-5">
+                        <li className="mb-3">Plomberie</li>
+                        <li className="mb-3">Menuserie</li>
+                        <li className="mb-3">Carrelage</li>
+                        <li className="mb-3">Mecanique</li>
+                        <li className="mb-3">Plomberie</li>
+                    </ul>
+                </div>
+                 <div className="">
+                    <p className="  uppercase mb-3">Resources</p>
+                    <ul className="text-sm gap-5">
+                        <li className="mb-3">Accueil</li>
+                        <li className="mb-3">Publier un projet</li>
+                        <li className="mb-3">se connecter</li>
+                        <li className="mb-3">S'inscrire</li>
+                        <li className="mb-3">Decouvrir</li>
+                    </ul>
+                </div>
+                 <div className="">
+                    <p className="  uppercase mb-3">Suivez nous</p>
+                    <ul className="text-sm gap-5">
+                          <li className="mb-3 flex items-center gap-2"><Button
+                              variant="icon"
+                              size="small"
+                              icon={{ icon: RiFacebookFill }}
+                          />Facebook</li>
+                           <li className="mb-3 flex items-center gap-2"><Button
+                              variant="icon"
+                              size="small"
+                              icon={{ icon: RiDiscordFill }}
+                          />Discord</li>
+                         <li className="mb-3 flex items-center gap-2"><Button
+                              variant="icon"
+                              size="small"
+                              icon={{ icon: RiTwitterFill }}
+                          />Twitter</li>
+                           <li className="mb-3 flex items-center gap-2"><Button
+                              variant="icon"
+                              size="small"
+                              icon={{ icon: RiInstagramFill }}
+                          />Intagram</li>
+                    </ul>
+
+                </div>
+               
+            </footer>
+             <div className="text-center ">
+                    <p>&copy; Copyright Gollain {annee} - Tous droits réservés</p>
+                </div>
+        </Contenair>
     </>
   )
 }
