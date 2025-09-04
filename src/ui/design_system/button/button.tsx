@@ -11,6 +11,8 @@ interface Props {
     disabled?:boolean
     isLoading?:boolean
     children?:React.ReactNode
+    type?:"button"|"submit"
+    fullWight?:boolean
 }
 
 function Button({
@@ -22,6 +24,8 @@ function Button({
   disabled = false,
   isLoading = false,
   children,
+  type="button",
+  fullWight=false
 }: Props) {
     let variantStyle:string="";
     let sizeStyle:string="";
@@ -73,9 +77,9 @@ function Button({
 
   return (
     <button
-        type="button" 
+        type={type} 
         disabled={disabled}
-        className={clsx(variantStyle,icoSize,sizeStyle, isLoading && "cursor-wait","relative")}
+        className={clsx(variantStyle,icoSize,sizeStyle,isLoading && "cursor-not-allowed","relative",fullWight && "w-full")}
         onClick={()=>{
             console.log("Onclick")}}
        
@@ -86,11 +90,11 @@ function Button({
                 
             </div>
         )}
-        <div className={clsx(isLoading && "invisible")}>
+        <div className={clsx(isLoading && "invisible" )}>
             {icon && variant === "icon" ? (
                 <icon.icon size={icoSize} />
             ) : (
-                <div className={clsx("flex items-center gap-1")}>
+                <div className={clsx("flex items-center gap-1 justify-center")}>
                     {icon && iconPosition === "left" &&
                         <icon.icon size={icoSize} />
                     }

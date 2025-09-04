@@ -45,10 +45,10 @@ function Navigation({}: Props) {
           </Typography>
 
           <div className="flex items-center gap-2">
-            <Link to="/login">
+            <Link to="/connexion/login">
               <Button size="small">Se connecter</Button>
             </Link>
-            <Link to="/inscription">
+            <Link to="/connexion/register">
               <Button size="small" variant="secondary">
                 S'inscrire
               </Button>
@@ -85,10 +85,10 @@ function Navigation({}: Props) {
             </Link>
 
             <div className="flex flex-col gap-2 w-full">
-              <Link to="/login" onClick={() => setIsOpen(false)}>
+              <Link to="/connexion/login" onClick={() => setIsOpen(false)}>
                 <Button size="small">Se connecter</Button>
               </Link>
-              <Link to="/register" onClick={() => setIsOpen(false)}>
+              <Link to="/connexion/register" onClick={() => setIsOpen(false)}>
                 <Button size="small" variant="secondary">
                   S'inscrire
                 </Button>

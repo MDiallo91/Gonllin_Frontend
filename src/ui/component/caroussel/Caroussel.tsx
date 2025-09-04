@@ -1,6 +1,5 @@
 import { Swiper, SwiperSlide } from "swiper/react";
-import "swiper/css";
-
+import 'swiper/swiper-bundle.css';
 
 import { Navigation, Pagination } from "swiper/modules";
 
@@ -20,6 +19,7 @@ export default function Carousel() {
                 "Travaux d’installation, de maintenance et de réparation des équipements électriques dans les habitations, bureaux et industries.",
             image: Electricite,
         },
+        
         {
             titre: "Plomberie",
             description:

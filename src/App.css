@@ -33,6 +33,10 @@
     --color-gray-200:#B8B8B8;
     --color-gray-100:#D6D6D6;
 
+    --color-alert-danger:  #DC3545;
+    --color-alert-success: #28A745; 
+    --color-alert-warning: #FFC107; 
+
         
 }
   html {
