@@ -2,6 +2,10 @@ import { useState } from "react";
 import type { LoginFormType } from "../../types/FormType";
 import LoginView from "../../ui/component/connexion/login/LoginView"
 import { useForm, type SubmitHandler } from "react-hook-form";
+import UserService from "../../service/userService";
+import { useNavigate } from "react-router-dom";
+import  {toast} from "react-toastify"
+
 
 function Login() {
 
@@ -16,10 +20,28 @@ function Login() {
     reset,
   } = useForm<LoginFormType>();
 
-  const onSubmit: SubmitHandler<LoginFormType> = async (formData) => {
-    console.log("formData", formData)
+  const navigate =useNavigate()
+
+  const onSubmit: SubmitHandler<LoginFormType> = async (formData:LoginFormType) => {
+    console.log("formData avant", formData)
     setIsLoading(true)
-  }
+    await UserService.login(formData)
+      .then(async({  status }) => {
+
+
+        if(status===200){
+          navigate('/'); // redirection après succès
+        }
+      })
+      .catch(err => {
+        console.error("Erreur de connexion:", err);
+         toast.error("Email ou mot de pass incorrect")
+      })
+      .finally(() => {
+        setIsLoading(false);
+      });
+  };
+  
 
   return (
     <div>

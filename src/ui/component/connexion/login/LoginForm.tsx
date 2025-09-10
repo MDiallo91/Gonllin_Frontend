@@ -10,7 +10,6 @@ interface Props{
 function LoginForm({form}:Props) {
     const { errors,  register, handleSubmit, onSubmit, isLoading } = form;
 
-  console.log("form",form)
   return (
    <form onSubmit={handleSubmit(onSubmit)} className="space-y-4 pt-8 pb-5" >
         <Input
@@ -32,7 +31,7 @@ function LoginForm({form}:Props) {
           id="password"
         />
        
-        <Button isLoading={isLoading} fullWight  type="submit" >S'inscrire</Button>
+        <Button isLoading={isLoading} fullWight   type="submit" >Connexion</Button>
     </form>
   )
 }

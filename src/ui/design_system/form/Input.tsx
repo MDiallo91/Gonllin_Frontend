@@ -5,7 +5,7 @@ import Typography from "../typography/typography";
 interface Props{
     isLoading:boolean;
     placeholder:string;
-    type?:"text"|"email"|"password"|"radio";
+    type?:"text"|"email"|"password"|"radio"|"textarea";
     register:any;
     errors:any;
     errorMsg:string;

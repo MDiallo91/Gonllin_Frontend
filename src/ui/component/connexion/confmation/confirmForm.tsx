@@ -7,25 +7,25 @@ interface Props{
 }
 
 
-function ForgetPasswordForm({form}:Props) {
-    const { errors, register, handleSubmit, onSubmit, isLoading } = form;
-
+function ConfirmForm({form}:Props) {
+    const { errors,  register, handleSubmit, onSubmit, isLoading } = form;
 
   return (
    <form onSubmit={handleSubmit(onSubmit)} className="space-y-4 pt-8 pb-5" >
+
         <Input
           isLoading={isLoading}
-          placeholder="mdoudail@gmail.com"
+          placeholder="Code de confirmation"
           register={register}
-          type="email"
+          type="text"
           errors={errors}
           errorMsg="Ce champ est aubligatoir"
-          id="email"
+          id="code"
         />
-
-        <Button isLoading={isLoading} fullWight  type="submit" >Envoyer</Button>
+       
+        <Button isLoading={isLoading} fullWight   type="submit" >Verifier</Button>
     </form>
   )
 }
 
-export default ForgetPasswordForm
+export default ConfirmForm

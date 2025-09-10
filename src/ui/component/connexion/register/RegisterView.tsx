@@ -9,9 +9,10 @@ import type { FormPropsType } from "../../../../types/FormType"
 
 interface Props{
   form:FormPropsType
+  role?:string
 }
 
-function RegisterView({form}:Props) {
+function RegisterView({form,role}:Props) {
   return (
     <Contenair   className="min-h-screen p-2 md:px-17  md:grid md:grid-cols-2 md:gap-20 md:py-7"> 
         <div className="flex items-center">
@@ -39,7 +40,10 @@ function RegisterView({form}:Props) {
               </div>
             </div>
             {/* composant form  */}
-            <RegisterForm form={form}/>
+            <RegisterForm 
+            form={form}
+            role={role}
+            />
           </Box>
         </div>
     </Contenair>

@@ -5,13 +5,15 @@ import Contenair from "../../contenair/Contenair"
 import LoginForm from "./LoginForm"
 import LoginImg from "/svg/login.svg"
 import { Link } from "react-router-dom"
-
+import { useContext } from "react";
+import uidContext from "../../../../AppContext";
 
 interface Props{
   form:FormPropsType
 }
 
 function LoginView({form}:Props) {
+  const user = useContext(uidContext);
   return (
     <Contenair  className="min-h-screen p-2 md:px-17  md:grid md:grid-cols-2 md:gap-20 md:py-7"> 
         <div className="flex items-center">
@@ -36,6 +38,7 @@ function LoginView({form}:Props) {
                   S'inscrire
                 </Link>
                  </Typography>
+                 <div>les user connecté {user?.email} </div>
               </div>
             </div>
              <LoginForm form={form}/>

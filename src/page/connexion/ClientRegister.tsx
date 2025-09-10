@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 import UserService from "../../service/userService";
 
 
-function Register() {
+function ClientRegister() {
 
   //logique du formulaire
   const [isLoading,setIsLoading]=useState(false)
@@ -21,10 +21,12 @@ function Register() {
   }=useForm<RegisterFormType>();
 
   const navigate =useNavigate()
+  const role="client"
 
   const onSubmit: SubmitHandler<RegisterFormType> = async (formData:RegisterFormType) => {
     // console.log("formData avant", formData)
     setIsLoading(true)
+    formData.role=role
     //gestion des erreur
     if (formData.password.length <= 5) {
       setError("password", {
@@ -37,7 +39,7 @@ function Register() {
 
     await UserService.register(formData)
       .then(async({  status }) => {
-
+     
         // if(status===200){
           navigate('/connexion/confirmation'); // redirection après succès
         // }
@@ -55,6 +57,7 @@ function Register() {
   return (
     <>
       <RegisterView
+        role={role}
         form={{
           errors,
           control,
@@ -68,4 +71,4 @@ function Register() {
   )
 }
 
-export default Register
+export default ClientRegister

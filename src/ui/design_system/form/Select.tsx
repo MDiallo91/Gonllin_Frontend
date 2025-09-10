@@ -9,6 +9,7 @@ interface Props {
   id: string;
   required?: boolean;
   options: { label: string; value: string }[];
+  header?:string;
 }
 
 function Select({
@@ -19,6 +20,7 @@ function Select({
   id,
   required = true,
   options,
+  header="Selectionez"
 }: Props) {
     return (
         <div>
@@ -37,7 +39,7 @@ function Select({
                     },
                 })}
             >
-                <option value="">Qui etes-vous?</option>
+                <option value="">{header}</option>
                 {options.map((opt) => (
                     <option key={opt.value} value={opt.value}>
                         {opt.label}

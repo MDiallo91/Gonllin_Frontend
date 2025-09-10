@@ -78,13 +78,12 @@ function Button({
   return (
     <button
         type={type} 
-        disabled={disabled}
+        disabled={disabled || isLoading? true:false}
         className={clsx(variantStyle,icoSize,sizeStyle,isLoading && "cursor-not-allowed","relative",fullWight && "w-full")}
-        onClick={()=>{
-            console.log("Onclick")}}
-       
+               
       >
         {isLoading &&(
+          
             <div className="absolute inset-0  flex items-center justify-center">
                 {variant==='accent'|| variant ==="icon" ?(<Spinner variant="white" size="small"/>):(<Spinner size="small"/>)}
                 
