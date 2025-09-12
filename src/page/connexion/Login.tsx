@@ -30,7 +30,8 @@ function Login() {
 
 
         if(status===200){
-          navigate('/'); // redirection après succès
+          navigate('/profil'); // redirection après succès
+          window.location.reload()
         }
       })
       .catch(err => {

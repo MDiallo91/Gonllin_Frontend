@@ -11,7 +11,7 @@ function Avatar({ size = "medium" ,alt,src}: Props) {
 
   switch (size) {
     case "very-small":
-      sizeAvatar = "w-20 h-20";
+      sizeAvatar = " w-[40px] h-[40px]";
       break;
       case "small":
     sizeAvatar = "w-35 h-35";
@@ -25,7 +25,7 @@ function Avatar({ size = "medium" ,alt,src}: Props) {
   }
 
   return (
-    <div className={clsx(sizeAvatar, "rounded-full")}>
+    <div className={clsx(sizeAvatar, "rounded-full flex items-center ")}>
       <img src={src} alt={alt} className="object-cover object-center rounded-full" />
     </div>
   );

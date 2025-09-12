@@ -74,3 +74,12 @@ export interface ProjetTypeForm{
    user:string
 
 }
+
+export interface RealisationTypeForm{
+    _id:string,
+    cretedAt:string,
+    realisateur:string,
+    images:string[],
+    description:string,
+
+}

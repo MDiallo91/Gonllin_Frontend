@@ -40,6 +40,7 @@ function Register() {
 
         // if(status===200){
           navigate('/connexion/confirmation'); // redirection après succès
+          window.location.reload()
         // }
       })
       .catch(err => {

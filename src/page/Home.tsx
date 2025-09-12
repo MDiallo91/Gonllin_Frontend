@@ -20,9 +20,9 @@ function Home() {
   return (
     <>
         {/* Section presentation  */}
-        <Contenair className="flex relative flex-col md:flex-row  text-white items-center bg-primary-200 gap-3 md:gap-10">
+        <Contenair className="flex relative flex-col md:flex-row   text-white items-center bg-primary-200 gap-3 md:gap-10">
    
-        <div className="flex flex-col w-full md:w-1/2 text-center md:text-left  p-6 py-12">
+        <div className="flex flex-col w-full md:w-1/2 text-center md:text-left   p-6 py-12">
             <Typography component="h1" variant="body-lg" weight="medium" theme="secondary"  className=" text-center md:text-5xl md:text-left font-medium "
  >
             Connectez-vous avec des professionnels qualifiés

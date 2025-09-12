@@ -50,7 +50,7 @@ function EntrepriseContenair() {
         if(etap<totalEtaps){
           setEtap((prev) => prev + 1)
         }else if(status===200){
-          navigate('/'); // redirection après succès
+          navigate('/profil'); // redirection après succès
         }
 
       })

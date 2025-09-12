@@ -14,6 +14,10 @@ import EntrepriseInfo from "../../../page/entreprise/entreprise"
 import ClientRegister from "../../../page/connexion/ClientRegister"
 import Login from "../../../page/connexion/Login"
 import HomeProfil from "../../../page/profil/HomeProfil"
+import ProfilLayout from "../../../layout/ProfilLayout"
+import RealisationProfil from "../../../page/profil/RealisationProfil"
+import MessageProfil from "../../../page/profil/MessageProfil"
+import ProjetProfil from "../../../page/profil/ProjetProfil"
 
 
 function index() {
@@ -34,7 +38,10 @@ function index() {
             <Route path="/travailleurInfo" element={<AdminLayout>{<TravailleurInfo/>}</AdminLayout>} />
             <Route path="/clientInfo" element={<AdminLayout>{<ClientInfo/>}</AdminLayout>} />
             <Route path="/entrepriseInfo" element={<AdminLayout>{<EntrepriseInfo/>}</AdminLayout>} />
-            <Route path="/profil" element={<AdminLayout>{<HomeProfil/>}</AdminLayout>} />
+            <Route path="/profil/message" element={<ProfilLayout>{<MessageProfil/>}</ProfilLayout>} />
+            <Route path="/profil/projet" element={<ProfilLayout>{<ProjetProfil/>}</ProfilLayout>} />
+            <Route path="/profil/realisation" element={<ProfilLayout>{<RealisationProfil/>}</ProfilLayout>} />
+            <Route path="/profil" element={<ProfilLayout>{<HomeProfil/>}</ProfilLayout>} />
             <Route path="/design" element={<AdminLayout>{<DesignSystem/>} </AdminLayout>} />
         </Routes>
     </BrowserRouter>
