@@ -1,5 +1,4 @@
 import axios, { AxiosError } from "axios";
-import type { RealisationTypeForm } from "../types/FormType";
 
 const BASE_URL = import.meta.env.VITE_API_URL;
 
@@ -34,6 +33,25 @@ export default class RealisationService {
     try {
       const response = await axios.get(
         `${BASE_URL}/api/realisation/realisateur/${id}`,
+        {
+          withCredentials: true,
+        }
+      );
+      const data = response.data;
+      return {
+        data: data,
+      };
+    } catch (error) {
+      const err = error as AxiosError;
+      console.error("Erreur register:", err.response?.data || err.message);
+      throw err;
+    }
+  }
+
+   static async getAll(): Promise<{ data: any; }> {
+    try {
+      const response = await axios.get(
+        `${BASE_URL}/api/realisation/getRealisation`,
         {
           withCredentials: true,
         }

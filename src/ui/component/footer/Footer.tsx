@@ -17,7 +17,7 @@ function Footer() {
                     <ul className="text-sm gap-5">
                         <li className="mb-3">Plomberie</li>
                         <li className="mb-3">Menuserie</li>
-                        <li className="mb-3">Carrelage</li>
+                        <li className="mb-3">Carrelage</li> 
                         <li className="mb-3">Mecanique</li>
                         <li className="mb-3">Plomberie</li>
                     </ul>

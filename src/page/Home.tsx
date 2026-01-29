@@ -13,6 +13,7 @@ import avatar from "/svg/avatar.svg"
 import ChoiOuvrier from "/svg/choiOuvrier.svg"
 import Postuler from "/svg/postuler.svg"
 import PubProjet from "/svg/publierProjet.svg"
+import AllRealisation from "../ui/component/profil/realisation/AllRealisation"
 
 
 function Home() {
@@ -81,7 +82,7 @@ function Home() {
 
 
       {/* Section comment ça marche */}
-      
+      {/* <AllRealisation/> */}
         <Contenair className="md:py-5 p-0 md:px-6 mx-auto gap-1 md:gap-8 bg-gray-50">
             <Typography
                 component="h3"

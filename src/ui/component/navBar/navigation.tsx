@@ -19,7 +19,7 @@ function Navigation({}: Props) {
           <Logo size="small" />
           <div className="flex flex-col">
             <div className="text-gray font-extrabold text-[24px] ">
-              Gollain
+              Gonllain
             </div>
             <Typography variant="body-sm" theme="primary" component="span" className="hidden md:block">
               Trouvez vos ouvriers
@@ -31,7 +31,7 @@ function Navigation({}: Props) {
         <div className="hidden md:flex items-center gap-7">
           <Typography variant="body-base" className="flex items-center gap-7">
             <Link
-              to="/projet"
+              to="/connexion/Clientregister"
               className="hover:text-primary transition-colors font-semibold"
             >
               Publier un projet
@@ -50,7 +50,7 @@ function Navigation({}: Props) {
             </Link>
             <Link to="/connexion/register">
               <Button size="small" variant="secondary">
-                S'inscrire
+                S'inscrire comme pro
               </Button>
             </Link>
           </div>

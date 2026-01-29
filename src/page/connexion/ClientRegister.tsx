@@ -27,6 +27,7 @@ function ClientRegister() {
     // console.log("formData avant", formData)
     setIsLoading(true)
     formData.role=role
+    // console.log("FormData",formData)
     //gestion des erreur
     if (formData.password.length <= 5) {
       setError("password", {
@@ -46,7 +47,7 @@ function ClientRegister() {
       })
       .catch(err => {
         console.error("Erreur de connexion:", err);
-         toast.error("Email ou mot de pass incorrect")
+         toast.error("Une erreur est survenue, veillez reessayer")
       })
       .finally(() => {
         setIsLoading(false);

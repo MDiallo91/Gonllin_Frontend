@@ -38,7 +38,7 @@ function ClientContenair() {
 
   const navigate = useNavigate()
   const travailleur = useContext(uidContext);
-  const id = travailleur?.profile._id;
+  const id = travailleur?.profile?._id;
 
 
   const onSubmit: SubmitHandler<any> = async (formData: any) => {
@@ -55,7 +55,7 @@ function ClientContenair() {
           return
         } else if (status === 200) {
            toast.success("Votre projet a été publier avec succes")
-          navigate('/'); // redirection après succès
+          navigate('/profil'); // redirection après succès
         }
         
       })
@@ -65,7 +65,7 @@ function ClientContenair() {
       .then(async ({ status }) => {
          if (status === 200) {
          
-          navigate('/'); // redirection après succès
+          navigate('/profil'); // redirection après succès
         }
 
       })

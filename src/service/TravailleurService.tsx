@@ -6,7 +6,7 @@ const BASE_URL = import.meta.env.VITE_API_URL;
 export default class TravailleurService {
 
 //enregistrement
-  static async update(id:string, travailleur: TravailleurFormType ): Promise<{ data: any; token: string; message: string; status: number }> {
+  static async update(id:any, travailleur: TravailleurFormType ): Promise<{ data: any; token: string; message: string; status: number }> {
     try {
       const response = await axios.put(
         `${BASE_URL}/api/travailleur/${id}`,

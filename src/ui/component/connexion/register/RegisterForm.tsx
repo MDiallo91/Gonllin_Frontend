@@ -18,7 +18,7 @@ function RegisterForm({form,role}:Props) {
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-4 pt-8 pb-5" >
         <Input
           isLoading={isLoading}
-          placeholder="mdoudail@gmail.com"
+          placeholder="exemple@gmail.com"
           register={register}
           type="email"
           errors={errors}

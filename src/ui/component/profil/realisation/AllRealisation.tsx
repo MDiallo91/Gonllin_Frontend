@@ -1,10 +1,10 @@
 import { useContext, useEffect, useState } from "react";
-import RealistionView from "./RealisationView";
 import RealisationService from "../../../../service/RealisationService";
 import type { RealisationTypeForm } from "../../../../types/FormType";
 import uidContext from "../../../../AppContext";
+import RealisationCard from "./RealisationCard";
 
-const RealistionContenair = () => {
+const AllRealisation = () => {
   const [realisations, setRealisations] = useState<RealisationTypeForm[]>([]);
   const [loading, setLoading] = useState(true);
   const user = useContext(uidContext);
@@ -16,7 +16,7 @@ const RealistionContenair = () => {
 
     setLoading(true); // on lance le chargement
 
-    RealisationService.getByUser(userId)
+    RealisationService.getAll()
       .then((res) => {
         setRealisations(res.data);
       })
@@ -29,8 +29,8 @@ const RealistionContenair = () => {
 
 
   return (
-    <RealistionView isLoading={loading} userId={userId} realisations={realisations} />
+    <RealisationCard isLoading={loading}  realisations={realisations} />
   );
 };
 
-export default RealistionContenair;
+export default AllRealisation;

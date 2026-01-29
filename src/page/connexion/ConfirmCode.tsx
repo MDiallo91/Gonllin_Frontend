@@ -31,13 +31,13 @@ function Confirm() {
 
 
         if(status===200){
-          if(user.role==="client"){
+          if(user?.role==="client"){
              navigate('/clientInfo'); // redirection après succès
           }
-          if(user.role==="independant"){
+          if(user?.role==="independant"){
              navigate('/travailleurInfo'); // redirection après succès
           }
-          if(user.role==="entreprise"){
+          if(user?.role==="entreprise"){
              navigate('/entrepriseInfo'); // redirection après succès
           }
         }

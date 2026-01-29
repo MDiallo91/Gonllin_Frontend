@@ -2,50 +2,24 @@ import type { RealisationTypeForm } from "../../../../types/FormType";
 import Avatar from "../../../design_system/avatar/Avatar";
 import Spinner from "../../../design_system/spinner/Spinner";
 import Contenair from "../../contenair/Contenair";
-import PostImages from "../Post";
-import RealisationForm from "./RealisationForm";
-import image1 from "/images/profil1.png";
 import { motion } from "framer-motion"
+import PostImages from "../Post";
 
 
 interface Props {
   realisations: RealisationTypeForm[];
-  userId: any,
   isLoading: boolean
 }
+
 const BASE_URL = import.meta.env.VITE_API_URL;
 
-const RealisationView = ({ isLoading, realisations, userId }: Props) => {
+
+const RealisationCard = ({ isLoading, realisations }: Props) => {
   return (
-    <Contenair className="flex w-full h-screen gap-4 md:px-6 py-4 bg-secondary-50 relative overflow-hidden">
-      {/* Colonne gauche */}
-      <div className="hidden md:block w-1/5 bg-white rounded shadow-sm p-2 sticky top-0 h-screen overflow-y-auto">
-        <h2 className="text-lg font-semibold mb-3 text-center border-b border-b-primary">Menu</h2>
-        <ul className="space-y-2">
-          <li className="hover:text-primary text-center cursor-pointer p-3 border border-gray-300 bg-primary-400 hover:bg-primary-600 hover:text-white rounded ">
-            Profil
-          </li>
-          <li className="hover:text-primary text-center cursor-pointer p-3 border border-gray-300 bg-primary-400 hover:bg-primary-600 hover:text-white rounded ">
-            Premium
-          </li>
-          <li className="hover:text-primary text-center cursor-pointer p-3 border border-gray-300 bg-primary-400 hover:bg-primary-600 hover:text-white rounded ">
-            Groupes
-          </li>
-          <li className="hover:text-primary text-center cursor-pointer p-3 border border-gray-300 bg-primary-400 hover:bg-primary-600 hover:text-white rounded ">
-            Paramètres
-          </li>
-        </ul>
-      </div>
-
-      {/* Colonne centrale */}
-
-
-      {/* Colonne centrale */}
+    <div>
       <Contenair className="p-2 w-3/5 h-screen overflow-y-auto">
-        <div className="bg-white rounded shadow-sm p-4 mb-4">
-          <RealisationForm realisateurId={userId} />
-        </div>
 
+      
         {isLoading ? (
           <div className="h-full w-full flex items-center justify-center">
             <Spinner variant="primary" size="large" />
@@ -98,19 +72,8 @@ const RealisationView = ({ isLoading, realisations, userId }: Props) => {
           </motion.div>
         )}
       </Contenair>
+    </div>
+  )
+}
 
-      {/* Colonne droite */}
-      <div className="hidden md:block w-1/5 bg-white rounded shadow-sm p-2 sticky top-0 h-screen overflow-y-auto">
-        <h2 className="text-lg font-semibold mb-3 text-center  border-b border-b-primary">Sponsorisé</h2>
-        <ul className="space-y-2">
-          <li className="hover:text-primary cursor-pointer">
-            <img src={image1} alt="img" />
-          </li>
-
-        </ul>
-      </div>
-    </Contenair>
-  );
-};
-
-export default RealisationView;
+export default RealisationCard

@@ -10,7 +10,7 @@ interface Props {
     form: FormPropsType
     etap: number
     secteur: SecteurFormType[]
-    setEtap: React.Dispatch<React.SetStateAction<number>> // 👈 bien typé ici aussi
+    setEtap: React.Dispatch<React.SetStateAction<number>> 
     totalEtaps?: number
 }
 

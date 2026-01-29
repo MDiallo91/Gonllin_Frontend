@@ -1,9 +1,8 @@
+import Messagecontenair from "../../ui/component/profil/message/MessageContenair"
 
 function MessageProfil() {
   return (
-    <div>
-
-    </div>
+      <Messagecontenair/>
   )
 }
 

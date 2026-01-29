@@ -39,8 +39,11 @@ function Register() {
       .then(async({  status }) => {
 
         // if(status===200){
+          toast.success("Succes!, Vous allez recevoir le conde de confirmation par email")
           navigate('/connexion/confirmation'); // redirection après succès
+
           window.location.reload()
+         
         // }
       })
       .catch(err => {

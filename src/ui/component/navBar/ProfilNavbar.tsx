@@ -8,14 +8,13 @@ import Button from "../../design_system/button/button";
 import Avatar from "../../design_system/avatar/Avatar";
 import uidContext from "../../../AppContext";
 
-interface Props {}
+interface Props { }
 const BASE_URL = import.meta.env.VITE_API_URL;
 function ProfilNavbar
-({}: Props) {
+  ({ }: Props) {
   const [isOpen, setIsOpen] = useState(false);
 
-  const user=useContext(uidContext)
-
+  const user = useContext(uidContext)
   return (
     <div className=" shadow ">
       <Contenair className="flex items-center  justify-between py-0.5 gap-7 lg:px-20">
@@ -30,54 +29,56 @@ function ProfilNavbar
           </div>
         </div>
         <div className="md:hidden gap-7 flex items-center justify-between">
-                <Button variant='icon' size='small' icon={{ icon: RiMailUnreadLine }} >accent</Button>
-                <Button variant='icon'  size='small' icon={{ icon: RiNotification2Fill }} >accent</Button>
-            </div>
+          <Button variant='icon' size='small' icon={{ icon: RiMailUnreadLine }} >accent</Button>
+          <Button variant='icon' size='small' icon={{ icon: RiNotification2Fill }} >accent</Button>
+        </div>
         {/*Affichage Desktop */}
         <div className="hidden md:flex items-center gap-7 ">
           <Typography variant="body-sm">
-  <nav className="flex items-center gap-7 md:gap-20">
-    {[
-      { label: "Projet", to: "/profil/projet" },
-      { label: "Publication", to: "/profil/realisation" },
-      { label: "Message", to: "/profil/message" },
-      
-    ].map((item) => (
-      <NavLink
-        key={item.label}
-        to={item.to}
-        className={({ isActive }) =>
-          isActive
-            ? "text-primary font-semibold transition-colors"
-            : "text-gray-700 hover:text-primary font-semibold transition-colors"
-        }
-      >
-        {item.label}
-      </NavLink>
-    ))}
-
-    <div className="flex  gap-3 justify-around items-center">
-      <Button
-        variant="icon"
-        size="small"
-        icon={{ icon: RiMailUnreadLine }}
-      >
-        accent
-      </Button>
-      <Button
-        variant="icon"
-        size="small"
-        icon={{ icon: RiNotification2Fill }}
-      >
-        accent
-      </Button>
-       <Avatar src={ `${BASE_URL}${user?.photo}`}  alt='avattar' size='very-small' />
-    </div>
-  </nav>
-</Typography>
+            <nav className="flex items-center gap-7 md:gap-20">
+              {[
+                user?.role === "client"
+                  ? { label: "Projet", to: "/clientInfo" }
+                  : { label: "Projet", to: "/profil/projet" },
+                { label: "Publication", to: "/profil/realisation" },
+                { label: "Message", to: "/profil/message" },
+              ].map((item) => (
+                <NavLink
+                  key={item.label}
+                  to={item.to}
+                  className={({ isActive }) =>
+                    isActive
+                      ? "text-primary font-semibold transition-colors"
+                      : "text-gray-700 hover:text-primary font-semibold transition-colors"
+                  }
+                >
+                  {item.label}
+                </NavLink>
+              ))}
 
 
-         
+              <div className="flex  gap-3 justify-around items-center">
+                <Button
+                  variant="icon"
+                  size="small"
+                  icon={{ icon: RiMailUnreadLine }}
+                >
+                  accent
+                </Button>
+                <Button
+                  variant="icon"
+                  size="small"
+                  icon={{ icon: RiNotification2Fill }}
+                >
+                  accent
+                </Button>
+                <Avatar src={`${BASE_URL}${user?.photo}`} alt='avattar' size='very-small' />
+              </div>
+            </nav>
+          </Typography>
+
+
+
         </div>
 
         {/* Hamburger (mobile) */}
@@ -101,7 +102,7 @@ function ProfilNavbar
             >
               Projets
             </Link>
-             <Link
+            <Link
               to="/profil/realisation"
               className="hover:text-primary font-semibold"
               onClick={() => setIsOpen(false)}
@@ -115,8 +116,8 @@ function ProfilNavbar
             >
               Message
             </Link>
-           
-            
+
+
           </div>
         </div>
       )}
@@ -125,4 +126,4 @@ function ProfilNavbar
 }
 
 export default ProfilNavbar
-;
+  ;

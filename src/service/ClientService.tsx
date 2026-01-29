@@ -6,7 +6,7 @@ const BASE_URL = import.meta.env.VITE_API_URL;
 export default class ClientService {
 
 //enregistrement
-  static async update(id:string, client: ClientFormType ): Promise<{ data: any; token: string; message: string; status: number }> {
+  static async update(id:any, client: ClientFormType ): Promise<{ data: any; token: string; message: string; status: number }> {
     try {
       const response = await axios.put(
         `${BASE_URL}/api/client/${id}`,

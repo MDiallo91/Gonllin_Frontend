@@ -66,20 +66,67 @@ export interface EntrepriseFormType{
     _id:string //on recuperer l'id venant de user connecté pour le stocker dans entreprise
 
 }
-export interface ProjetTypeForm{
-    description:string,
-    dateDebut:string,
-    localite:string,
-    secteur:string,
-   user:string
+// export interface ProjetTypeForm{
+//     description:string,
+//     dateDebut:string,
+//     localite:string,
+//     secteur:string,
+//    user:string
 
-}
+// }
 
 export interface RealisationTypeForm{
     _id:string,
-    cretedAt:string,
-    realisateur:string,
+    cretedAt:Date,
+    realisateur:UserTypeForm,
     images:string[],
     description:string,
+
+}
+export interface SecteurTypeForm {
+  _id: string;
+  nom: string;
+  picture: string;
+
+}
+export interface ProfilTypeForm {
+  _id: string;
+  nom: string;
+  prenom:string
+  secteur:SecteurTypeForm
+  bio:string;
+  telephone:string;
+  adresse:string;
+
+}
+export interface UserTypeForm {
+  _id: string;
+  role: string;
+  profile:ProfilTypeForm
+  email:string
+  photo:string
+
+}
+export interface ProjetTypeForm {
+  _id: string;
+  titre: string;
+  description: string;
+  etat: "attente" | "valide" | "rejete"; 
+  localite: string;
+  secteur: SecteurTypeForm;
+  user: UserTypeForm; 
+  createdAt: string;
+  updatedAt: string;
+  dateDebut:string
+
+}
+export interface EncherTypeForm{
+    
+    _id:string,
+    user:UserTypeForm,
+    description:string,
+    projet:ProjetTypeForm,
+    localite:string,
+    secteur:{}
 
 }
