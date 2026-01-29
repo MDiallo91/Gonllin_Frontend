@@ -1,7 +1,9 @@
 import type { FormPropsType, SecteurFormType } from "../../../types/FormType"
 import Box from "../../design_system/box/Box"
 import Contenair from "../contenair/Contenair"
-import EntrepriseForm from "./entrepriseForm"
+import EntrepriseForm from "./EntrepriseForm"
+// import EntrepriseForm from "./entrepriseForm"
+
 import RegisterImg from "/svg/presentation.svg"
 
 
