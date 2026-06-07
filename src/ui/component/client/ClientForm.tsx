@@ -104,8 +104,8 @@ function ClientForm({ form, etap, setEtap, totalEtaps, secteur }: Props) {
                             />
                             <Radio
                                 isLoading={false}
-                                label="Dans un moi"
-                                value="moi"
+                                label="Dans un mois"
+                                value="mois"
                                 register={register}
                                 errors={errors}
                                 id="dateDebut"

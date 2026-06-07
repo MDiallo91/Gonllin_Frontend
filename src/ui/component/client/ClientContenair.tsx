@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import { useForm, type SubmitHandler } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-import type { ClientFormType, SecteurFormType, TravailleurFormType } from "../../../types/FormType";
+import type { SecteurFormType, TravailleurFormType } from "../../../types/FormType";
 import TravailleurView from "./ClientView";
 import uidContext from "../../../AppContext";
 import SecteurService from "../../../service/SecteurService";
@@ -26,8 +26,6 @@ function ClientContenair() {
     control,
     register,
     formState: { errors },
-    setError,
-    reset,
   } = useForm<TravailleurFormType>();
 
 
@@ -42,41 +40,29 @@ function ClientContenair() {
 
 
   const onSubmit: SubmitHandler<any> = async (formData: any) => {
-    setIsLoading(true)
-    if(formData){
-      formData.user=id
+    // Étapes 1 et 2 : avancer sans appel API
+    if (etap < totalEtaps) {
+      setEtap(prev => prev + 1);
+      return;
     }
-     console.log("formData avant", formData)
 
-    await ClientService.update(id, formData)
-      .then(async ({ status }) => {
-        if (etap < totalEtaps) {
-          setEtap((prev) => prev + 1)
-          return
-        } else if (status === 200) {
-           toast.success("Votre projet a été publier avec succes")
-          navigate('/profil'); // redirection après succès
-        }
-        
-      })
-
-      //enregistrement du projet
-      await ProjetService.register(formData)
-      .then(async ({ status }) => {
-         if (status === 200) {
-         
-          navigate('/profil'); // redirection après succès
-        }
-
-      })
-      .catch(err => {
-        console.error("Erreur de connexion:", err);
-        toast.error("Une erreur est survenue, veuillez reesayer")
-      })
-      .finally(() => {
-        setIsLoading(false);
+    // Étape 3 (dernière) : mettre à jour le profil client puis créer le projet
+    setIsLoading(true);
+    try {
+      formData.user = id;
+      await ClientService.update(id, {
+        prenom: formData.prenom,
+        nom: formData.nom,
+        telephone: formData.telephone,
       });
-
+      await ProjetService.register(formData);
+      toast.success("Votre profil et votre projet ont été enregistrés !");
+      navigate("/profil");
+    } catch {
+      toast.error("Une erreur est survenue, veuillez réessayer");
+    } finally {
+      setIsLoading(false);
+    }
   };
 
 

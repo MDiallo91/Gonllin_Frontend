@@ -5,21 +5,28 @@ import Button from "../../design_system/button/button";
 import Logo from "../../design_system/logo/Logo";
 import Typography from "../../design_system/typography/typography";
 import Contenair from "../contenair/Contenair";
+import { useAppConfig } from "../../../context/AppConfigContext";
+
+const BASE_URL = import.meta.env.VITE_API_URL;
 
 interface Props {}
 
 function Navigation({}: Props) {
   const [isOpen, setIsOpen] = useState(false);
+  const config = useAppConfig();
 
   return (
     <div className="border-b-2 border-secondary-200">
       <Contenair className="flex items-center  justify-between py-0.5 gap-7 lg:px-20">
         {/* Logo + titre */}
         <div className="flex items-center gap-2.5">
-          <Logo size="small" />
+          {config.logo
+            ? <img src={`${BASE_URL}${config.logo}`} alt={config.nomApp} className="w-12 h-12 object-contain" />
+            : <Logo size="small" />
+          }
           <div className="flex flex-col">
             <div className="text-gray font-extrabold text-[24px] ">
-              Gonllain
+              {config.nomApp}
             </div>
             <Typography variant="body-sm" theme="primary" component="span" className="hidden md:block">
               Trouvez vos ouvriers

@@ -1,129 +1,87 @@
 import axios, { AxiosError } from "axios";
-import type { EncherTypeForm } from "../types/FormType";
+import type { EncherTypeForm, PaginationMeta } from "../types/FormType";
 
 const BASE_URL = import.meta.env.VITE_API_URL;
 
-
 export default class EncherService {
-//enregistrement
-static async register(encher:EncherTypeForm): Promise<{ data: any; token: string; message: string; status: number }> {
-  try {
-    const response = await axios.post(
-      `${BASE_URL}/api/enchere/register`,encher,
-      {
-        headers: { "Content-Type": "application/json" },
-        withCredentials: true,
-      }
-    );
-    return response.data;
-  } catch (error) {
-    const err = error as AxiosError;
-    console.error("Erreur register:", err.response?.data || err.message);
-    throw err;
-  }
-}
-
-  static async update(enchereId:any,userChoisi:any ): Promise<{ data: any; token: string; message: string; status: number }> {
-    
-    try {
-      const response = await axios.put(
-        `${BASE_URL}/api/enchere/${enchereId}`,
-        userChoisi,
-        {
-          headers: { "Content-Type": "application/json" },
-          withCredentials: true,
+    static async register(enchere: Partial<EncherTypeForm>): Promise<any> {
+        try {
+            const response = await axios.post(`${BASE_URL}/api/enchere/register`, enchere, { withCredentials: true });
+            return response.data;
+        } catch (error) {
+            throw (error as AxiosError);
         }
-      );
-      const data = response.data;
-      return {
-        token: data.token,
-        message: data.message,
-        status: data.status,
-        data: data,
-      };
-    } catch (error) {
-      const err = error as AxiosError;
-      console.error("Erreur register:", err.response?.data || err.message);
-      throw err;
     }
-  }
 
-  
+    static async update(enchereId: string, data: Partial<EncherTypeForm>): Promise<any> {
+        try {
+            const response = await axios.put(`${BASE_URL}/api/enchere/${enchereId}`, data, { withCredentials: true });
+            return response.data;
+        } catch (error) {
+            throw (error as AxiosError);
+        }
+    }
 
+    static async accepter(enchereId: string, projetId: string): Promise<any> {
+        try {
+            const response = await axios.put(`${BASE_URL}/api/enchere/${enchereId}`, { statut: "accepte", projet: projetId }, { withCredentials: true });
+            return response.data;
+        } catch (error) {
+            throw (error as AxiosError);
+        }
+    }
 
-static async getEncherByUser(userId:any): Promise<{ data: EncherTypeForm[]; message: string; status: number }> {
-   try {
-    const response = await axios.get(
-      `${BASE_URL}/api/enchere/byUser/${userId}`,
+    static async delete(enchereId: string): Promise<any> {
+        try {
+            const response = await axios.delete(`${BASE_URL}/api/enchere/${enchereId}`, { withCredentials: true });
+            return response.data;
+        } catch (error) {
+            throw (error as AxiosError);
+        }
+    }
 
-      {
-        headers: { "Content-Type": "application/json" },
-        withCredentials: true,
-      }
-    );
-     const data = response.data;
-     console.log("dataForm",data)
-      return {
-        
-        message: data.message,
-        status: data.status,
-        data: data.result,
-      };
-  } catch (error) {
-    const err = error as AxiosError;
-    console.error("Erreur register:", err.response?.data || err.message);
-    throw err;
-  }
+    static async getEnchere(): Promise<{ data: EncherTypeForm[] } & PaginationMeta> {
+        try {
+            const response = await axios.get(`${BASE_URL}/api/enchere/getEnchere`, { withCredentials: true });
+            return response.data;
+        } catch (error) {
+            throw (error as AxiosError);
+        }
+    }
 
-}
+    static async getEncheresParProjet(projetId: string): Promise<{ data: EncherTypeForm[] }> {
+        try {
+            const response = await axios.get(`${BASE_URL}/api/enchere/byProjet/${projetId}`, { withCredentials: true });
+            return response.data;
+        } catch (error) {
+            throw (error as AxiosError);
+        }
+    }
 
+    static async getMesOffres(userId: string, page = 1): Promise<{ data: EncherTypeForm[] } & PaginationMeta> {
+        try {
+            const response = await axios.get(`${BASE_URL}/api/enchere/mesOffres/${userId}`, { params: { page }, withCredentials: true });
+            return response.data;
+        } catch (error) {
+            throw (error as AxiosError);
+        }
+    }
 
-static async getEncherByChoix(userId:any): Promise<{ data: EncherTypeForm[]; message: string; status: number }> {
-   try {
-    const response = await axios.get(
-      `${BASE_URL}/api/enchere/byChoix/${userId}`,
+    static async getEncherByUser(userId: string): Promise<{ data: EncherTypeForm[]; result: EncherTypeForm[] }> {
+        try {
+            const response = await axios.get(`${BASE_URL}/api/enchere/byUser/${userId}`, { withCredentials: true });
+            return response.data;
+        } catch (error) {
+            throw (error as AxiosError);
+        }
+    }
 
-      {
-        headers: { "Content-Type": "application/json" },
-        withCredentials: true,
-      }
-    );
-     const data = response.data;
-     console.log("dataForm",data)
-      return {
-        
-        message: data.message,
-        status: data.status,
-        data: data.result,
-      };
-  } catch (error) {
-    const err = error as AxiosError;
-    console.error("Erreur register:", err.response?.data || err.message);
-    throw err;
-  }
-}
-
-static async getEncher(): Promise<{ data: EncherTypeForm[]; message: string; status: number }> {
-  try {
-    const response = await axios.get(
-      `${BASE_URL}/api/projet/getProjets`,
-      {
-        headers: { "Content-Type": "application/json" },
-        withCredentials: true,
-      }
-    );
-     const data = response.data;
-      return {
-        message: data.message,
-        status: data.status,
-        data: data,
-      };
-  } catch (error) {
-    const err = error as AxiosError;
-    console.error("Erreur register:", err.response?.data || err.message);
-    throw err;
-  }
-}
-
-  
+    static async getEncherByChoix(userId: string): Promise<{ result: EncherTypeForm[] }> {
+        try {
+            const response = await axios.get(`${BASE_URL}/api/enchere/byChoix/${userId}`, { withCredentials: true });
+            return response.data;
+        } catch (error) {
+            throw (error as AxiosError);
+        }
+    }
 }
